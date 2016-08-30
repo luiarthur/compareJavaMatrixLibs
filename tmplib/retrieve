@@ -19,3 +19,6 @@ tar xzf commons-math3-3.5-bin.tar.gz commons-math3-3.5/commons-math3-3.5.jar
 mv commons-math3-3.5/commons-math3-3.5.jar .
 rm commons-math3-3.5-bin.tar.gz
 rm -r commons-math3-3.5
+
+# Parallel Colt
+wget http://central.maven.org/maven2/net/sourceforge/parallelcolt/parallelcolt/0.10.0/parallelcolt-0.10.0.jar

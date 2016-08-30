@@ -58,5 +58,14 @@ object Compare {
     //timer { List(0 until it).foreach(i => {val y = E * E.t}) } // .0035s
 
     // Parallel Colt
+    print("Parallel Colt")
+    import cern.colt.matrix.tdouble._
+    import cern.jet.math.tdouble.DoubleFunctions._
+    val alg = new cern.colt.matrix.tdouble.algo.DenseDoubleAlgebra
+    val F = DoubleFactory2D.dense.make(n,k)
+    for(i <- 0 until F.rows; j <- 0 until F.columns) F.set(i, j, R.nextGaussian)
+    alg.mult(F,alg.transpose(F))
+    timer { for (i <- 1 to it) { val y = D times D.transpose}} // 8.22s
+    timer { List(0 until it).foreach(i => {val y = D times D.transpose}) } // .086s
   }
 }
