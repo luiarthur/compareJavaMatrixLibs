@@ -10,6 +10,15 @@ libraryDependencies ++= Seq(
   // https://mvnrepository.com/artifact/gov.nist.math/jama
   // Dense only, 35K, single-threaded
   "gov.nist.math" % "jama" % "1.0.2",
+
+  // Breeze
+  // 35MB
+  "org.scalanlp" %% "breeze" % "latest.integration",
+  "org.scalanlp" %% "breeze-natives" % "0.12",
+
+  // https://mvnrepository.com/artifact/net.sourceforge.parallelcolt/parallelcolt
+  // 4.2MB
+  "net.sourceforge.parallelcolt" % "parallelcolt" % "0.10.0",
  
   // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
   // kinda slow... single threaded, 1.9MB
