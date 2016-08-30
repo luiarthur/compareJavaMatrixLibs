@@ -64,8 +64,7 @@ object Compare {
     val alg = new cern.colt.matrix.tdouble.algo.DenseDoubleAlgebra
     val F = DoubleFactory2D.dense.make(n,k)
     for(i <- 0 until F.rows; j <- 0 until F.columns) F.set(i, j, R.nextGaussian)
-    alg.mult(F,alg.transpose(F))
-    timer { for (i <- 1 to it) { val y = D times D.transpose}} // 8.22s
-    timer { List(0 until it).foreach(i => {val y = D times D.transpose}) } // .086s
+    timer { for (i <- 0 until it) { val x = alg.mult(F,alg.transpose(F))}} // 2.34
+    timer { List(0 until it).foreach {i=> val x = alg.mult(F,alg.transpose(F))}} // .022 => not 100x faster
   }
 }
