@@ -22,7 +22,7 @@ object Compare {
     //timer { List(0 until it).foreach(i => {val y = A mult A.transpose}) } // .06s
     //timer { List(0 until it).par.foreach(i=> {val y = A mult A.transpose})} // .06s
 
-    // la4j
+    // la4j. Requires java >= 7 
     print("la4j")
     import org.la4j.matrix._
     import org.la4j.linear._
