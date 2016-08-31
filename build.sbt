@@ -19,6 +19,10 @@ libraryDependencies ++= Seq(
   // https://mvnrepository.com/artifact/net.sourceforge.parallelcolt/parallelcolt
   // 4.2MB
   "net.sourceforge.parallelcolt" % "parallelcolt" % "0.10.0",
+
+  // https://mvnrepository.com/artifact/org.jblas/jblas
+  // 10.2 MB
+  "org.jblas" % "jblas" % "1.2.4",
  
   // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
   // kinda slow... single threaded, 1.9MB

@@ -66,5 +66,11 @@ object Compare {
     for(i <- 0 until F.rows; j <- 0 until F.columns) F.set(i, j, R.nextGaussian)
     timer { for (i <- 0 until it) { val x = alg.mult(F,alg.transpose(F))}} // 2.34
     timer { List(0 until it).foreach {i=> val x = alg.mult(F,alg.transpose(F))}} // .022 => not 100x faster
+
+    print("jblas, can i multithread?")
+    import org.jblas._
+    val G = DoubleMatrix.randn(n,k)
+    timer {for (i <- 0 until it) {val x = G mmul G.transpose} } // 2.19 single thread
+    timer { List(0 until it).foreach (i=>{val x = G mmul G.transpose})} // .028 => not 100x faster
   }
 }
