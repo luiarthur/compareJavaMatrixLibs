@@ -43,7 +43,7 @@ object Compare {
 
     // Jama
     print("Jama")
-    import Jama._
+    import Jama._ // most reliable / portable, smallest jar, fastest init of matrices, relatively nice syntax, but no parallel, no sparse matrix support, not the fastest (parallel colt) pure java solution, but not the slowest (commons)>
     val D = new Matrix(n, k)
     for(i <- 0 until D.getRowDimension; j <- 0 until D.getColumnDimension) D.set(i, j, R.nextGaussian)
     timer { for (i <- 1 to it) { val y = D times D.transpose}} // 8.22s
