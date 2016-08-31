@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # la4j
-wget http://central.maven.org/maven2/org/la4j/la4j/0.5.5/la4j-0.5.5.jar
+wget http://central.maven.org/maven2/org/la4j/la4j/0.6.0/la4j-0.6.0.jar
 
 # Jama
 wget http://math.nist.gov/javanumerics/jama/Jama-1.0.3.jar

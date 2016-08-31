@@ -54,7 +54,7 @@ object Compare {
     print("Breeze")
     import breeze.linalg.DenseMatrix
     val E = DenseMatrix.fill(n,k)(R.nextGaussian)
-    timer {for (i <- 1 to it) {val y = E * E.t}} // .35s => on par with Julia (OpenBLAS)
+    timer {for (i <- 1 to it) {val y = E * E.t}} // .35s, on par with Julia (OpenBLAS). In absence of OpenBLAS, performs like Jama
     //timer { List(0 until it).foreach(i => {val y = E * E.t}) } // .0035s
 
     // Parallel Colt
