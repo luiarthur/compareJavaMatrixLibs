@@ -11,8 +11,9 @@ object Compare {
     }
 
     val R = new scala.util.Random(0)
-    val n = 1000
-    val it = 100
+    val n = 1000 // dimensions of squre matrices
+    //val n = 32 // dimensions of squre matrices
+    //val it = 100
 
     // ejml
     msg("ejml: ")
@@ -31,14 +32,14 @@ object Compare {
     timer { val y = B multiply B } // 1.17
 
     // commons Math
-    msg("apache commons math: ")
+    msg("apache commons math: ") // fast for small matrices
     import org.apache.commons.math3.linear._
     val C = new Array2DRowRealMatrix(n,n)
     for (i <- 0 until C.getRowDimension; j <- 0 until C.getColumnDimension) C.setEntry(i,j,R.nextGaussian)
     timer { val y = C multiply C } // 1.10
 
     // Jama
-    msg("Jama: ")
+    msg("Jama: ") // fastest for small matrices
     import Jama._ // most reliable / portable, smallest jar, fastest init of matrices, relatively nice syntax, but no parallel, no sparse matrix support, not the fastest (parallel colt) pure java solution, but not the slowest (commons)>
     val D = new Matrix(n,n)
     for(i <- 0 until D.getRowDimension; j <- 0 until D.getColumnDimension) D.set(i, j, R.nextGaussian)
@@ -49,14 +50,14 @@ object Compare {
     msg("Breeze: ")
     timer {val y = E * E } // .05s, on par with Julia (OpenBLAS). In absence of OpenBLAS, performs like Jama
 
-    // Parallel Colt
-    msg("Parallel Colt: ")
-    import cern.colt.matrix.tdouble._
-    import cern.jet.math.tdouble.DoubleFunctions._
-    val alg = new cern.colt.matrix.tdouble.algo.DenseDoubleAlgebra
-    val F = DoubleFactory2D.dense.make(n,n)
-    for(i <- 0 until F.rows; j <- 0 until F.columns) F.set(i, j, R.nextGaussian)
-    timer { val x = alg.mult(F,F) } // .423
+    // Parallel Colt // takes long time to exit program
+    //msg("Parallel Colt: ")
+    //import cern.colt.matrix.tdouble._
+    //import cern.jet.math.tdouble.DoubleFunctions._
+    //val alg = new cern.colt.matrix.tdouble.algo.DenseDoubleAlgebra
+    //val F = DoubleFactory2D.dense.make(n,n)
+    //for(i <- 0 until F.rows; j <- 0 until F.columns) F.set(i, j, R.nextGaussian)
+    //timer { val x = alg.mult(F,F) } // .423
 
     msg("jblas, can i multithread? ")
     import org.jblas._
