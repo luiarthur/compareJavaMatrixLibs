@@ -50,6 +50,13 @@ object Compare {
     msg("Breeze: ")
     timer {val y = E * E } // .05s, on par with Julia (OpenBLAS). In absence of OpenBLAS, performs like Jama
 
+    // ND4S. Pretty fast. Like Breeze.
+    import org.nd4s.Implicits._
+    import org.nd4j.linalg.factory.Nd4j
+    val F = Array.tabulate(n){i => Array.tabulate(n){j => R.nextGaussian}}.toNDArray
+    msg("ND4S: ")
+    timer {val y = F * F } // .05s, on par with Julia (OpenBLAS). In absence of OpenBLAS, performs like Jama
+
     // Parallel Colt // takes long time to exit program
     //msg("Parallel Colt: ")
     //import cern.colt.matrix.tdouble._
@@ -59,7 +66,7 @@ object Compare {
     //for(i <- 0 until F.rows; j <- 0 until F.columns) F.set(i, j, R.nextGaussian)
     //timer { val x = alg.mult(F,F) } // .423
 
-    msg("jblas, can i multithread? ")
+    //msg("jblas, can i multithread? ")
     import org.jblas._
     val G = DoubleMatrix.randn(n,n)
     timer { val y = G mmul G } // .1745 single thread
