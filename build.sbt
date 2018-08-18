@@ -33,3 +33,5 @@ libraryDependencies ++= Seq(
   // kinda slow... single threaded, 1.9MB
   "org.apache.commons" % "commons-math3" % "3.6.1"
 )
+
+//resolvers += "Sonatype Releases" at "https://oss.sonatype.org/content/repositories/releases/"
