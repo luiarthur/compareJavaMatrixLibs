@@ -29,6 +29,9 @@ libraryDependencies ++= Seq(
   "org.nd4j" % "nd4j-native-platform" % nd4jVersion,
   "org.nd4j" %% "nd4s" % nd4jVersion,
  
+  // https://mvnrepository.com/artifact/org.ojalgo/ojalgo
+  // "org.ojalgo" % "ojalgo" % "46.3.0",
+
   // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
   // kinda slow... single threaded, 1.9MB
   "org.apache.commons" % "commons-math3" % "3.6.1"
